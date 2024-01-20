@@ -32,7 +32,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            height: 70vh;
+            height: 100vh;
             margin: 0;
         }
 
@@ -69,7 +69,7 @@
             border-radius: 50px;
             cursor: pointer;
             background-color: #ffffff;
-            color: white;
+            color: rgb(255, 255, 255);
             transition: background-color 0.5s;
         }
 
@@ -134,7 +134,13 @@
             <button class="operator" onclick="appendCharacter('+')">+</button>
             <button class="operator" onclick="calculate()">=</button>
         </div>
+
+        <div>
+            <p> Made by Daniel fr</p>
+        </div>
+        
     </div>
+    
     <script>
         function clearDisplay() {
             document.getElementById('display').value = '';
