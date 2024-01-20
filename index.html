@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MTW App Template</title>
+    <!--
+        The tailwind CDN is designed for development purposes only, and is not the best choice for production.
+        Read more here: https://tailwindcss.com/docs/installation 
+    -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- example for dark theme styling when using tailwind cdn -->
+    <style>
+        /*examples for dark/light themes*/
+        .dark .dark\:text-white {
+            color: #fff;
+        }
+        .dark .dark\:bg-gray-800 {
+            background-color: #1f2937;
+        }
+        .light .light\:text-black {
+            color: #000;
+        }
+
+        /*add your custom css rules here*/
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #282c34;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 70vh;
+            margin: 0;
+        }
+
+        #calculator {
+            background-color: #1e2228;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(202, 166, 166, 0.5);
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            font-size: 24px;
+            border: none;
+            border-radius: 5px;
+            background-color: #2b303b;
+            color: white;
+        }
+       /* clear{
+            width: 48px;
+            height: 48px;
+            margin: 5px;  
+            border-radius: 50px;
+        }*/
+
+        button {
+            width: 48px;
+            height: 48px;
+            margin: 10px;
+            font-size: 18px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            background-color: #ffffff;
+            color: white;
+            transition: background-color 0.5s;
+        }
+
+        button:hover {
+            background-color: #2d3748;
+        }
+
+        button.operator {
+            background-color: #314777;
+            color: #ffffff;
+        }
+
+        button.operator:hover {
+            background-color: #2b25ca;
+        }
+    </style>
+</head>
+
+<body class="dark:text-white light:text-black">
+
+    <!-- your app code goes here -->
+    
+    <div id="calculator">
+        <input type="text" id="display" readonly>
+
+        <div>
+            <button onclick="clearDisplay()">C</button>
+            <button style="float: right;" onclick="clearChar()">del</button>
+
+
+
+        </div>
+
+        <div>
+            <button onclick="appendCharacter('7')">7</button>
+            <button onclick="appendCharacter('8')">8</button>
+            <button onclick="appendCharacter('9')">9</button>
+            <button class="operator" onclick="appendCharacter('/')">/</button>
+
+
+        </div>
+
+        <div>
+            <button onclick="appendCharacter('4')">4</button>
+            <button onclick="appendCharacter('5')">5</button>
+            <button onclick="appendCharacter('6')">6</button>
+            <button class="operator" onclick="appendCharacter('*')">*</button>
+
+        </div>
+
+        <div>
+            <button onclick="appendCharacter('1')">1</button>
+            <button onclick="appendCharacter('2')">2</button>
+            <button onclick="appendCharacter('3')">3</button>
+            <button class="operator" onclick="appendCharacter('-')">-</button>
+
+        </div>
+
+        <div>
+            <button onclick="appendCharacter('0')">0</button>
+            <button class="operator" onclick="appendCharacter('.')">.</button>
+            <button class="operator" onclick="appendCharacter('+')">+</button>
+            <button class="operator" onclick="calculate()">=</button>
+        </div>
+    </div>
+    <script>
+        function clearDisplay() {
+            document.getElementById('display').value = '';
+        }
+        function clearChar(){
+            var currentDisplay = document.getElementById('display').value;
+            document.getElementById('display').value = currentDisplay.slice(0, -1);
+        }
+
+        function appendCharacter(character) {
+            document.getElementById('display').value += character;
+        }
+
+        function calculate() {
+            try {
+                document.getElementById('display').value = eval(document.getElementById('display').value);
+            } catch (error) {
+                document.getElementById('display').value = 'Error';
+            }
+        }
+    </script>
+
+    <!-- special scripts for integration in App Gallery - must be placed at the bottom of the HTML after your code -->
+    <script>
+        // custom config for the MTW app 
+        const mtwAppConfig = {
+            border: true // app border in the MTW page                    
+        }
+
+        ///////////////////////////////////////////////////////
+        // implement this functions in order to use private API        
+        const sendPrivateApiRequest = async () => {
+            // your code here:
+            // sendRequestToParent({ cat: 'getAssets' })
+        }        
+
+        const acceptPrivateApiResponse = async (data) => {
+            // process received data here:
+            // console.log(data)
+        }
+
+        // use this in order to send on document load
+        document.addEventListener('DOMContentLoaded', () => {
+            // your code here:
+            //sendRequestToParent({ method: 'getAssets' })
+        })
+
+    </script>
+    <script src="https://morethanwallet.com/appstore/index.js"></script>
+</body>
+
+</html>
