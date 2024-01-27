@@ -28,19 +28,21 @@
         body {
             font-family: 'Arial', sans-serif;
             background-color: #282c34;
-            color: white;
+            color: rgb(255, 255, 255);
             display: flex;
             align-items: center;
             justify-content: center;
-            height: 70vh;
+            height: 100vh;
             margin: 0;
         }
 
         #calculator {
             background-color: #1e2228;
+            width:250px;
             border-radius: 20px;
             padding: 20px;
             box-shadow: 0 0 10px rgba(202, 166, 166, 0.5);
+            color: rgb(255, 255, 255);
         }
 
         input {
@@ -68,8 +70,7 @@
             border: none;
             border-radius: 50px;
             cursor: pointer;
-            background-color: #ffffff;
-            color: white;
+
             transition: background-color 0.5s;
         }
 
@@ -134,7 +135,13 @@
             <button class="operator" onclick="appendCharacter('+')">+</button>
             <button class="operator" onclick="calculate()">=</button>
         </div>
+
+        <div>
+            <p> Made by Daniel fr</p>
+        </div>
+        
     </div>
+    
     <script>
         function clearDisplay() {
             document.getElementById('display').value = '';
